@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 200px 100px;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+    height: 1056px;
+}
+
+.container .signup__screen {
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 20px;
+gap: 60px;
+width: 1080px;
+height: 800px;
+
+background: rgba(245, 247, 255, 0.85);
+border-radius: 10px;
+}
+
+.container .signup__screen .img {
+    width: 450px;
+height: 536px;
+background: url("../images/Image\ Placeholder\ \(3\).png");
+border-radius: 10px;
+
+}
+
+.container .signup__screen .details {
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 40px;
+
+width: 450px;
+height: 536px;
+}
+
+.container .signup__screen .details .heading {
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+width: 450px;
+height: 146px;
+
+}
+
+.container .signup__screen .details .heading h4 {
+    width: 450px;
+height: 50px;
+
+font-family: ' Abdoullah Ashgar EL-kharef';
+font-style: normal;
+font-weight: 400;
+font-size: 42px;
+line-height: 120%;
+display: flex;
+align-items: center;
+text-transform: capitalize;
+color: #2D2D2D;
+}
+
+
+.container .signup__screen .details .heading p {
+    width: 450px;
+height: 76px;
+
+font-family: 'Mulish';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 120%;
+color: #1F1249;
+}
+
+.container .signup__screen .details .form-control {
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+margin-top: 0px;
+gap: 20px;
+
+width: 450px;
+height: 400px;
+}
+
+
+.container .signup__screen .details .form-control form {
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+width: 450px;
+height: 270px;
+}
+
+.container .signup__screen .details .form-control form .input-control {
+display: flex;
+flex-direction: column;
+}
+
+.container .signup__screen .details .form-control form .input-control .error {
+    font-size: 5px;
+    color:rgb(155, 21, 21);
+}
+
+.container .signup__screen .details .form-control form .input-control .info {
+        display: flex;
+flex-direction: row;
+align-items: center;
+padding: 8px 20px;
+gap: 12px;
+
+width: 450px;
+height: 60px;
+
+background: #FFFFFF;
+border: 1px solid #DBE3FF;
+border-radius: 10px;
+}
+.container .signup__screen .details .form-control form .input-control .info input {
+    width: 369px;
+height: 44px;
+border:none;
+outline:none;
+font-family: 'Mulish';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+display: flex;
+align-items: center;
+ }
+
+.container .signup__screen .details .form-control form .button__container {
+    display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 20px;
+
+width: 450px;
+height: 60px;
+}
+
+.container .signup__screen .details .form-control form .button__container button {
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px 50px;
+gap: 12px;
+
+width: 450px;
+height: 60px;
+
+background: linear-gradient(113.87deg, #2663DF 14.81%, #758FF0 88.76%);
+box-shadow: 0px 6px 18px #9CADF2;
+border-radius: 10px;
+cursor: pointer;
+}
+
+
+.container .signup__screen .details .form-control form .button__container button a {
+    width: 118px;
+height: 22px;
+
+font-family: 'Mulish';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 140%;
+text-decoration: none;
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+}
