@@ -5,7 +5,7 @@ const emailInput = document.querySelector("input#email");
 const passwordInput = document.querySelector("input#password");
 const confirmPasswordInput = document.querySelector("input#confirmPassword");
 const form = document.querySelector("form");
-
+const apiEndPoint = "https://goldblv.com/api/hiring/tasks/register";
 //! set Error Function
 const showError = (element, message) => {
   const formControl = element.parentElement.parentElement;
@@ -22,105 +22,76 @@ const success = (element) => {
 // ! validate username , username => Username must consist of 5 to 15 characters, only letters and numbers are allowed, with no numbers at the beginning or the end
 
 const validateUsername = (username) => {
-  const pattern = /^[a-z][a-z0-9]*([a-z]+){5,15}$/gi;
+  const pattern = /^[a-z][a-z0-9]*([a-z]+)$/gi;
   const valid = pattern.test(username);
-  if (valid) {
+  if (
+    valid &&
+    username.length >= 5 &&
+    username.length <= 15 &&
+    username.trim() !== ""
+  ) {
     success(usernameInput);
     return true;
-  } else if (username.trim() === "") {
-    showError(usernameInput, "Username mustn't leave blank");
-    return;
-  }
-  if (username.length < 5) {
-    showError(usernameInput, "Username must too short should between 5-15");
-    return;
-  } else if (username.length > 15) {
-    showError(usernameInput, "Username must too long should between 5-15");
-    return;
-  } else {
+  } else if (!valid) {
     showError(
       usernameInput,
       "Username must consist of 5 to 15 characters, only letters and numbers are allowed, with no numbers at the beginning or the end"
     );
-    return;
+  } else if (username.trim() === "") {
+    showError(usernameInput, "Username mustn't be blank");
+  } else if (username.length < 5) {
+    showError(usernameInput, "Username is too short should between 5-15");
+  } else if (username.length > 15) {
+    showError(usernameInput, "Username is too long should between 5-15");
   }
+  return false;
 };
 
 //! Validate Email
 const validateEmail = (email) => {
   const regex = /^[a-z]+\d+@[a-z]+\.[a-z]{2,3}/;
   const valid = regex.test(email);
-  if (valid) {
+  if (valid && email.trim() !== "") {
     localStorage.setItem("email", email);
     success(emailInput);
     return true;
-  } else if (email.trim() === "") {
-    showError(emailInput, "Email mustn't leave blank");
-    return;
-  } else {
+  } else if (!valid) {
     showError(emailInput, "Please , Enter a valid Email");
-    return;
+  } else if (email.trim() === "") {
+    showError(emailInput, "Email mustn't be blank");
   }
+  return false;
 };
 
 //! validate password => password at least 8 character
 const validatePassword = (password) => {
-  if (password.length >= 8) {
+  if (password.length >= 8 && password.trim() !== "") {
     success(passwordInput);
     return true;
   } else if (password.trim() === "") {
-    showError(passwordInput, "Paassword mustn't leave blank");
-    return;
+    showError(passwordInput, "Paassword mustn't be blank");
   } else {
     showError(passwordInput, "password must be at least 8 character");
-    return;
   }
+  return false;
 };
 
 //! Validate confirm password
 
 const validateConfirmPassword = (password1, password2) => {
-  if (password2.trim() !== "") {
-    if (password2.length >= 8) {
-      if (password1 === password2) {
-        success(confirmPasswordInput);
-        return true;
-      } else {
-        showError(confirmPasswordInput, "The password does not match");
-      }
-    } else {
-      showError(
-        confirmPasswordInput,
-        "password should be at least 8 character"
-      );
-    }
-  } else {
-    showError(confirmPasswordInput, "Confirm password mustn't be blank");
-  }
-};
-
-const valiadeForm = () => {
-  const usernameValue = usernameInput.value;
-  const emailValue = emailInput.value;
-  const passwordValue = passwordInput.value;
-  const confirmPasswordValue = confirmPasswordInput.value;
-  if (
-    validateUsername(usernameValue) &&
-    validateEmail(emailValue) &&
-    validatePassword(passwordValue) &&
-    validateConfirmPassword(passwordValue, confirmPasswordValue)
-  ) {
+  if (password1 === password2) {
+    success(confirmPasswordInput);
     return true;
+  } else {
+    showError(confirmPasswordInput, "The password does not match");
   }
 };
-
 //! values of all input in form \
 const formInputValues = () => {
   const usernameValue = usernameInput.value;
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
   const confirmPasswordValue = confirmPasswordInput.value;
-  //* returns all data form
   return {
     usernameValue,
     emailValue,
@@ -131,9 +102,9 @@ const formInputValues = () => {
 
 //! send data to api
 
-const sendData = async () => {
+const sendData = () => {
   const inputsValue = formInputValues();
-  await fetch("https://goldblv.com/api/hiring/tasks/register", {
+  fetch(apiEndPoint, {
     method: "POST",
     body: JSON.stringify({
       username: inputsValue.usernameValue,
@@ -146,11 +117,7 @@ const sendData = async () => {
     },
   })
     .then((data) => {
-      if (data.status === 200) {
-        window.location = "../success.html";
-      } else {
-        alert("Status 404");
-      }
+      window.location = "../success.html";
     })
     .catch((error) => alert(error.message));
 };
@@ -172,7 +139,7 @@ const validateForm = () => {
 };
 
 //! submit form
-createAccountBtn.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   validateForm();
 });

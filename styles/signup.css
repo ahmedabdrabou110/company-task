@@ -237,7 +237,7 @@ color: #FFFFFF;
 
 
 
-@media (max-width:649px){
+@media (max-width:649px) and (min-width:350px){
    .container .signup__screen {
     flex-direction: column;
    }
@@ -245,4 +245,32 @@ color: #FFFFFF;
    .container .signup__screen .img {
     margin-top: 400px;
    }
+}
+
+@media (max-width:349px) {
+    body{
+        overflow-x: scroll;
+    }
+
+    .container .signup__screen {
+        flex-direction: column;
+    }
+    .container .signup__screen .img {
+        width: 200px;
+    }
+
+    .container .signup__screen .details {
+        width: 200px;
+    }
+
+    .container .signup__screen .details h4 {
+        font-size: 16px;
+    }
+    .container .signup__screen .details h4 {
+        font-size: 14px;
+    }
+
+    .container .signup__screen .details form .input-control {
+        width: 200px;
+    }
 }
