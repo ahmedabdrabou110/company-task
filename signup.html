@@ -17,7 +17,7 @@
             <p>Go ahead and sign up, let everyone know how awesome you are!</p>
           </div>
           <div class="form-control">
-            <form>
+            <form method="post" action="./success.html">
               <div class="input-control">
                 <div class="info">
                   <div class="icons">
@@ -55,8 +55,8 @@
                   </div>
                   <input
                     type="password"
+                    placeholder="password"
                     required
-                    placeholder="Password"
                     autocomplete="off"
                     id="password"
                   />
@@ -72,15 +72,15 @@
                     type="password"
                     required
                     placeholder="confirm password"
-                    autocomplete="new-password"
-                    id="confirm"
+                    autocomplete="off"
+                    id="confirmPassword"
                   />
                 </div>
                 <div class="error"></div>
               </div>
               <div class="button__container">
-                <button>
-                  <a href="success.html">Create Account</a>
+                <button type="submit">
+                  <span>Create Account</span>
                 </button>
               </div>
             </form>

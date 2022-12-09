@@ -3,16 +3,19 @@
     margin: 0;
     box-sizing: border-box;
 }
+body {
+    width: 100vw;
+    overflow: hidden;
+}
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 200px 100px;
     gap: 10px;
     position: relative;
     width: 100%;
-    height: 835px;
+    height: 800px;
 /* 
 background: url(gradientbackground.png), #FFFFFF; */
 }
@@ -102,7 +105,7 @@ outline:none;
 }
 
 
-.container .welcome__screen .details .button__container button {
+.container .welcome__screen .details .button__container a {
     display: flex;
 flex-direction: row;
 justify-content: center;
@@ -118,12 +121,12 @@ box-shadow: 0px 6px 18px #9CADF2;
 border-radius: 10px;
 border:none;
 cursor: pointer;
+text-decoration: none;
 }
 
-.container .welcome__screen .details .button__container button a {
+.container .welcome__screen .details .button__container a span {
     width: 89px;
     height: 22px;
-    text-decoration: none;
 
 font-family: 'Mulish';
 font-style: normal;

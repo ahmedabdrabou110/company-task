@@ -3,17 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body{
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
 .container {
     display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 200px 100px;
 gap: 10px;
-
-position: relative;
 width: 100%;
-height: 976px;
+position: relative;
 }
 
 .container .success__container {
@@ -24,18 +29,17 @@ align-items: center;
 padding: 60px;
 gap: 60px;
 
-width: 1080px;
-height: 576px;
+/* width: 1080px; */
+/* height: 576px; */
 
 background: rgba(245, 247, 255, 0.85);
 border-radius: 10px;
 }
 
-.container .success__container .img {
+.container .success__container .img  img{
     width: 450px;
 height: 456px;
 
-background: url("../images/Image\ Placeholder\ \(4\).png");
 border-radius: 10px;
 }
 

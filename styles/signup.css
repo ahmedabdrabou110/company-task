@@ -5,8 +5,9 @@
 }
 
 body {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
 }
 
 .container {
@@ -14,11 +15,9 @@ display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 200px 100px;
     gap: 10px;
     position: relative;
     width: 100%;
-    height: 1056px;
 }
 
 .container .signup__screen {
@@ -28,8 +27,7 @@ justify-content: center;
 align-items: center;
 padding: 20px;
 gap: 60px;
-width: 1080px;
-height: 800px;
+
 
 background: rgba(245, 247, 255, 0.85);
 border-radius: 10px;
@@ -123,7 +121,7 @@ flex-direction: column;
 }
 
 .container .signup__screen .details .form-control form .input-control .error {
-    font-size: 5px;
+    font-size: 10px;
     color:rgb(155, 21, 21);
 }
 
@@ -184,7 +182,7 @@ cursor: pointer;
 }
 
 
-.container .signup__screen .details .form-control form .button__container button a {
+.container .signup__screen .details .form-control form .button__container button span {
     width: 118px;
 height: 22px;
 
