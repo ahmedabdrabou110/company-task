@@ -29,17 +29,19 @@ align-items: center;
 padding: 60px;
 gap: 60px;
 
-/* width: 1080px; */
-/* height: 576px; */
-
 background: rgba(245, 247, 255, 0.85);
 border-radius: 10px;
 }
 
-.container .success__container .img  img{
+.container .success__container .img {
     width: 450px;
-height: 456px;
+    height: 456px;
 
+}
+
+.container .success__container .img  img{
+    width: 100%;
+    height: 100%;
 border-radius: 10px;
 }
 
@@ -61,12 +63,12 @@ align-items: flex-start;
 padding: 0px;
 gap: 20px;
 
-width: 450px;
+width: 100%;
 height: 96px;
 }
 
 .container .success__container .details .heading h4 {
-    width: 450px;
+    width:100%;
 height: 50px;
 
 font-family: ' Abdoullah Ashgar EL-kharef';
@@ -74,31 +76,73 @@ font-style: normal;
 font-weight: 400;
 font-size: 42px;
 line-height: 120%;
-/* or 50px */
-
 display: flex;
 align-items: center;
 text-transform: capitalize;
-
-/* Onboarding background grey */
-
 color: #2D2D2D;
 }
 
 .container .success__container .details .heading p {
-    width: 450px;
+    width: 100%;
 height: 26px;
-
 font-family: 'Mulish';
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 160%;
-/* identical to box height, or 26px */
-
 text-decoration-line: underline;
-
-/* light/purple-12 */
-
 color: #1F1249;
+}
+
+
+/*! Media Query*/
+
+@media (max-width:1050px) and (min-width:750px) {
+    .container .success__container {
+        width: 850px;
+    }
+}
+
+@media (max-width:749px) and (min-width:450px) {
+    .container .success__container {
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .container .success__container .img {
+        width: 420px;
+    }
+}
+
+@media (max-width:449px) and (min-width:280px) {
+    .container .success__container {
+        width: 400px;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .container .success__container .img {
+        width: 360px;
+    }
+
+    .container .success__container .details {
+        width: 350px;
+    }
+}
+
+
+@media (max-width:279px) {
+    .container .success__container {
+        width: 250px;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .container .success__container .img {
+        width: 220px;
+    }
+
+    .container .success__container .details {
+        width: 220;
+    }
 }
