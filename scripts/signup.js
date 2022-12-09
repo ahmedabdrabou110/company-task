@@ -48,12 +48,15 @@ const validateUsername = (username) => {
 
 //! Validate Email
 const validateEmail = (email) => {
-  const regex = /^\w+@[a-z]+\.[a-z]{2,3}/;
+  const regex = /^[a-z]+\d+@[a-z]+\.[a-z]{2,3}/;
   const valid = regex.test(email);
   if (valid) {
     localStorage.setItem("email", email);
     success(emailInput);
     return true;
+  } else if (email.trim() === "") {
+    showError(emailInput, "Email mustn't leave blank");
+    return;
   } else {
     showError(emailInput, "Please , Enter a valid Email");
     return;
@@ -65,6 +68,9 @@ const validatePassword = (password) => {
   if (password.length >= 8) {
     success(passwordInput);
     return true;
+  } else if (password.trim() === "") {
+    showError(passwordInput, "Paassword mustn't leave blank");
+    return;
   } else {
     showError(passwordInput, "password must be at least 8 character");
     return;
@@ -74,15 +80,22 @@ const validatePassword = (password) => {
 //! Validate confirm password
 
 const validateConfirmPassword = (password1, password2) => {
-  if (password2.length >= 8) {
-    if (password1 === password2) {
-      success(confirmPasswordInput);
-      return true;
+  if (password2.trim() !== "") {
+    if (password2.length >= 8) {
+      if (password1 === password2) {
+        success(confirmPasswordInput);
+        return true;
+      } else {
+        showError(confirmPasswordInput, "The password does not match");
+      }
     } else {
-      showError(confirmPasswordInput, "The password does not match");
+      showError(
+        confirmPasswordInput,
+        "password should be at least 8 character"
+      );
     }
   } else {
-    showError(confirmPasswordInput, "password should be at least 8 character");
+    showError(confirmPasswordInput, "Confirm password mustn't be blank");
   }
 };
 
