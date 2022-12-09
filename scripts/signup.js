@@ -101,37 +101,65 @@ const valiadeForm = () => {
   }
 };
 
-//! submit form
-createAccountBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+//! values of all input in form \
+const formInputValues = () => {
   const usernameValue = usernameInput.value;
   const emailValue = emailInput.value;
   const passwordValue = passwordInput.value;
   const confirmPasswordValue = confirmPasswordInput.value;
-  if (
-    validateUsername(usernameValue) &&
-    validateEmail(emailValue) &&
-    validatePassword(passwordValue) &&
-    validateConfirmPassword(passwordValue, confirmPasswordValue)
-  ) {
-    fetch("https://goldblv.com/api/hiring/tasks/register", {
-      method: "POST",
-      body: JSON.stringify({
-        username: usernameValue,
-        email: emailValue,
-        password: passwordValue,
-        password_confirmation: confirmPasswordValue,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+  //* returns all data form
+  return {
+    usernameValue,
+    emailValue,
+    passwordValue,
+    confirmPasswordValue,
+  };
+};
+
+//! send data to api
+
+const sendData = async () => {
+  const inputsValue = formInputValues();
+  await fetch("https://goldblv.com/api/hiring/tasks/register", {
+    method: "POST",
+    body: JSON.stringify({
+      username: inputsValue.usernameValue,
+      email: inputsValue.emailValue,
+      password: inputsValue.passwordValue,
+      password_confirmation: inputsValue.confirmPasswordValue,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((data) => {
+      if (data.status === 200) {
+        window.location = "../success.html";
+      } else {
+        alert("Status 404");
+      }
     })
-      .then((data) => {
-        if (data.ok) {
-          window.location = "../success.html";
-        }
-      })
-      .catch((error) => console.log(error));
+    .catch((error) => alert(error.message));
+};
+
+//! all validation
+const validateForm = () => {
+  const inputData = formInputValues();
+  if (
+    validateUsername(inputData.usernameValue) &&
+    validateEmail(inputData.emailValue) &&
+    validatePassword(inputData.passwordValue) &&
+    validateConfirmPassword(
+      inputData.passwordValue,
+      inputData.confirmPasswordValue
+    )
+  ) {
+    sendData();
   }
-  // return false;
+};
+
+//! submit form
+createAccountBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  validateForm();
 });
